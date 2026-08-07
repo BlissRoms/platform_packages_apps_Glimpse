@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <inset android:inset="10dp">
+            <shape android:shape="rectangle">
+                <!-- Perfectly round pill shape -->
+                <corners android:radius="1000dp" />
+                <!-- The color of the active item background -->
+                <solid android:color="?attr/colorSecondaryContainer" />
+            </shape>
+        </inset>
+    </item>
+    <item android:drawable="@android:color/transparent" />
+</selector>

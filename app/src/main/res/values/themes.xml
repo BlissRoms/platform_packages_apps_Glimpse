@@ -70,4 +70,14 @@
     <style name="Theme.Glimpse.SetWallpaperDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog.Centered">
         <item name="listItemLayout">@layout/set_wallpaper_dialog_item</item>
     </style>
+
+    <!-- Custom style for the inner active indicator pill -->
+    <style name="CustomActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <!-- Make the built-in active indicator invisible -->
+        <item name="android:width">0dp</item>
+        <item name="android:height">0dp</item>
+        <item name="android:color">@android:color/transparent</item>
+    </style>
+
+
 </resources>
