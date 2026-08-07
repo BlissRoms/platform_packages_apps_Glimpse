@@ -229,6 +229,19 @@ java_import {
     ],
 }
 
+android_library_import {
+    name: "Glimpse_com.github.Dimezis_BlurView",
+    aars: ["com/github/Dimezis/BlurView/version-3.2.0/BlurView-version-3.2.0.aar"],
+    sdk_version: "36",
+    min_sdk_version: "30",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    static_libs: [
+    ],
+}
+
 java_import {
     name: "Glimpse_com.github.bumptech.glide_annotations",
     jars: ["com/github/bumptech/glide/annotations/5.0.5/annotations-5.0.5.jar"],
@@ -473,5 +486,18 @@ android_library_import {
         "Glimpse_io.github.panpf.zoomimage_zoomimage-core-glide",
         "Glimpse_io.github.panpf.zoomimage_zoomimage-view",
         "kotlin-stdlib",
+    ],
+}
+
+java_import {
+    name: "Glimpse_org.jspecify_jspecify",
+    jars: ["org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar"],
+    sdk_version: "36",
+    min_sdk_version: "30",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    static_libs: [
     ],
 }

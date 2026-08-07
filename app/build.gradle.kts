@@ -58,6 +58,8 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.exifinterface)
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.blurview)
+    implementation("org.jspecify:jspecify:1.0.0")
     implementation(libs.androidx.lifecycle.service)
     implementation(libs.androidx.media3.common.ktx)
     implementation(libs.androidx.media3.exoplayer)
@@ -94,6 +96,7 @@ generateBp {
             module.group.startsWith("org.jetbrains") -> true
             module.group == "com.google.errorprone" -> true
             module.group == "com.google.guava" -> true
+            module.group == "org.checkerframework" -> true
             else -> false
         }
     }

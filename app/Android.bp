@@ -70,6 +70,7 @@ android_app {
         "androidx.savedstate_savedstate",
         "androidx.viewpager2_viewpager2",
         "Glimpse_com.adobe.xmp_xmpcore",
+        "Glimpse_com.github.Dimezis_BlurView",
         "Glimpse_com.github.bumptech.glide_glide",
         "Glimpse_com.github.bumptech.glide_okhttp3-integration",
         "Glimpse_com.google.android.material_material",
@@ -78,6 +79,7 @@ android_app {
         "Glimpse_io.github.panpf.zoomimage_zoomimage-core-android",
         "Glimpse_io.github.panpf.zoomimage_zoomimage-view-glide",
         "kotlin-stdlib",
+        "Glimpse_org.jspecify_jspecify",
     ],
 
     optimize: {
