@@ -77,19 +77,19 @@
             app:supportingText="1/3616s • ƒ/2.4 • 28mm" />
 
         <org.lineageos.glimpse.ui.views.ListItem
-            android:id="@+id/mediaInfoListItem"
-            style="@style/Theme.Glimpse.MediaInfoBottomSheetDialog.ListItem"
-            app:headlineText="Image.jpg"
-            app:leadingIconImage="@drawable/ic_image"
-            app:supportingText="image/jpg • 12.0MP • 3000 x 4000" />
-
-        <org.lineageos.glimpse.ui.views.ListItem
             android:id="@+id/locationInfoListItem"
             style="@style/Theme.Glimpse.MediaInfoBottomSheetDialog.ListItem"
             android:visibility="gone"
             app:headlineText="Ohio, US"
             app:leadingIconImage="@drawable/ic_location_on"
             app:supportingText="39.961152990628904 • -82.9963749073814" />
+
+        <org.lineageos.glimpse.ui.views.ListItem
+            android:id="@+id/mediaInfoListItem"
+            style="@style/Theme.Glimpse.MediaInfoBottomSheetDialog.ListItem"
+            app:headlineText="Image.jpg"
+            app:leadingIconImage="@drawable/ic_image"
+            app:supportingText="image/jpg • 12.0MP • 3000 x 4000" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
