@@ -14,8 +14,11 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.Toast
+import eightbitlab.com.blurview.BlurTarget
+import eightbitlab.com.blurview.BlurView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -72,6 +75,9 @@ class ViewActivity : AppCompatActivity(R.layout.activity_view) {
     // Views
     private val adjustButton by lazy { findViewById<MaterialButton>(R.id.adjustButton) }
     private val appBarLayout by lazy { findViewById<AppBarLayout>(R.id.appBarLayout) }
+    private val blurTarget by lazy { findViewById<BlurTarget>(R.id.blurTarget) }
+    private val blurView by lazy { findViewById<BlurView>(R.id.blurView) }
+    private val bottomSheetContainer by lazy { findViewById<FrameLayout>(R.id.bottomSheetContainer) }
     private val bottomSheetLinearLayout by lazy { findViewById<LinearLayout>(R.id.bottomSheetLinearLayout) }
     private val deleteButton by lazy { findViewById<MaterialButton>(R.id.deleteButton) }
     private val favoriteButton by lazy { findViewById<MaterialButton>(R.id.favoriteButton) }
@@ -189,7 +195,7 @@ class ViewActivity : AppCompatActivity(R.layout.activity_view) {
             setShowWhenLocked(true)
         }
 
-        ViewCompat.setOnApplyWindowInsetsListener(bottomSheetLinearLayout) { _, windowInsets ->
+        ViewCompat.setOnApplyWindowInsetsListener(bottomSheetContainer) { _, windowInsets ->
             val insets = windowInsets.getInsets(
                 WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
             )
@@ -198,7 +204,7 @@ class ViewActivity : AppCompatActivity(R.layout.activity_view) {
             // Once the system bars will be made visible again, this function
             // will be called again.
             if (!viewModel.fullscreenMode.value) {
-                bottomSheetLinearLayout.updatePadding(
+                bottomSheetContainer.updatePadding(
                     left = insets.left,
                     right = insets.right,
                     bottom = insets.bottom
@@ -212,6 +218,11 @@ class ViewActivity : AppCompatActivity(R.layout.activity_view) {
 
         // Attach the adapter to the view pager
         viewPager.adapter = mediaViewerAdapter
+
+        // Setup blur view
+        blurView.setupWith(blurTarget)
+            .setFrameClearDrawable(window.decorView.background)
+            .setBlurRadius(8f)
 
         toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -421,7 +432,7 @@ class ViewActivity : AppCompatActivity(R.layout.activity_view) {
             launch {
                 viewModel.fullscreenMode.collectLatest { fullscreenMode ->
                     appBarLayout.fade(!fullscreenMode)
-                    bottomSheetLinearLayout.fade(!fullscreenMode)
+                    bottomSheetContainer.fade(!fullscreenMode)
 
                     window.setBarsVisibility(systemBars = !fullscreenMode)
 
@@ -569,13 +580,13 @@ class ViewActivity : AppCompatActivity(R.layout.activity_view) {
 
     private fun updateSheetsHeight() {
         appBarLayout.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
-        bottomSheetLinearLayout.measure(
+        bottomSheetContainer.measure(
             View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED
         )
 
         viewModel.setSheetsHeight(
             appBarLayout.measuredHeight,
-            bottomSheetLinearLayout.measuredHeight,
+            bottomSheetContainer.measuredHeight,
         )
     }
 

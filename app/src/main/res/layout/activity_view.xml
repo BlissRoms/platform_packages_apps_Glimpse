@@ -11,10 +11,17 @@
     android:background="@android:color/black"
     tools:context=".ViewActivity">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
+    <eightbitlab.com.blurview.BlurTarget
+        android:id="@+id/blurTarget"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </eightbitlab.com.blurview.BlurTarget>
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -37,13 +44,30 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
-        android:id="@+id/bottomSheetLinearLayout"
+    <FrameLayout
+        android:id="@+id/bottomSheetContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@drawable/bg_media_viewer_bottom_sheet"
-        android:gravity="top|center">
+        android:layout_gravity="bottom">
+
+        <eightbitlab.com.blurview.BlurView
+            android:id="@+id/blurView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/bg_nav_pill_outline"
+            android:clipToOutline="true"
+            app:blurOverlayColor="@color/bg_nav_pill_color">
+
+            <LinearLayout
+                android:id="@+id/bottomSheetLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:gravity="top|center">
 
         <!-- Cannot mess with fixed padding from here because of insets -->
         <Space
@@ -93,5 +117,7 @@
             android:layout_height="match_parent" />
 
     </LinearLayout>
+        </eightbitlab.com.blurview.BlurView>
+    </FrameLayout>
 
 </FrameLayout>
